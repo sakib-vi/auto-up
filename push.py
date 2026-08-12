@@ -1,14 +1,19 @@
 import subprocess
 import os
 
-def quick_github_push(message="Update files"):
-    """One-line GitHub push function with safety checks"""
-    # ১. কারেন্ট ডিরেক্টরিতে .git ফোল্ডার আছে কিনা তা চেক করা
-    if not os.path.exists(".git"):
-        print("❌ Error: এটি কোনো Git repository নয়! প্রথমে 'git init' করুন।")
-        return
 
-    # ২. কমিট মেসেজের ডাবল কোট এস্কেপ করা যাতে শেল কমান্ড ক্র্যাশ না করে
+def quick_github_push(message="Update files"):
+    """
+    Quickly add, commit, and push changes to GitHub.
+    """
+
+    # Check whether the current directory is a Git repository
+    if not os.path.exists(".git"):
+        print("❌ Error: This is not a Git repository.")
+        print("💡 Run 'git init' first.")
+        return False
+
+    # Escape double quotes in the commit message
     safe_message = message.replace('"', '\\"')
 
     commands = [
@@ -16,24 +21,42 @@ def quick_github_push(message="Update files"):
         f'git commit -m "{safe_message}"',
         "git push"
     ]
-    
-    # ৩. কমান্ডগুলো ধাপে ধাপে রান করা এবং কোনো একটি ফেইল করলে থামানো
-    for cmd in commands:
-        print(f"Running: {cmd}")
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
-        
-        # কোনো কারণে কমান্ড ফেইল করলে (যেমন: commit করার মতো কোনো পরিবর্তন না থাকলে)
+
+    # Run commands one by one
+    for command in commands:
+        print(f"\n▶ Running: {command}")
+
+        result = subprocess.run(
+            command,
+            shell=True,
+            capture_output=True,
+            text=True
+        )
+
         if result.returncode != 0:
-            # যদি 'nothing to commit' মেসেজ আসে, তবে পুশ স্কিপ করা যেতে পারে
-            if "nothing to commit" in result.stderr or "nothing to commit" in result.stdout:
-                print("ℹ️ No changes detected to commit.")
+
+            # Handle the case where there are no changes to commit
+            if (
+                "nothing to commit" in result.stderr.lower()
+                or "nothing to commit" in result.stdout.lower()
+            ):
+                print("ℹ️ No changes detected. Continuing to push...")
                 continue
-            else:
-                print(f"❌ Error in command: {cmd}")
+
+            print(f"❌ Command failed: {command}")
+
+            if result.stderr.strip():
                 print(f"Details: {result.stderr.strip()}")
-                return
-    
-    print("✅ Done! Files uploaded to GitHub")
+
+            return False
+
+        # Display command output if available
+        if result.stdout.strip():
+            print(result.stdout.strip())
+
+    print("\n✅ Done! Changes have been pushed to GitHub.")
+    return True
+
 
 # Usage
 if __name__ == "__main__":
