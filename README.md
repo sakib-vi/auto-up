@@ -22,11 +22,13 @@
 4. শুধু Status চেক করুন
 5. Exit
  ```
-৪। এরপর Repository path দিন 
-৫। Commit message বসানঃauto-generate করতে চাইলে Enter চাপুন।
-৬। Branch name বসায়ে Enter চাপুন।
-৭। অপেক্ষা করুন।
+৪. এরপর Repository path দিন।
+৫. Commit message বসানঃauto-generate করতে চাইলে Enter চাপুন।
+৬' Branch name বসায়ে Enter চাপুন।
+৭. অপেক্ষা করুন।
 
 ==================================================
 ✨ UPLOAD COMPLETE!
 ==================================================
+
+
