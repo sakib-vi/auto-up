@@ -10,23 +10,23 @@
 ## কীভাবে ব্যবহার করবেন (Usage)
 ১. আপনার কম্পিউটারে Python এবং Git ইনস্টল থাকতে হবে।
 ২. টার্মিনালে নিচের কমান্ডটি লিখে স্ক্রিপ্টটি রান করুন:
-  - `python github_uploader.py`: মেনুভিত্তিক মূল অটোমেশন ফাইল।
-  - `push.py`: এক লাইনে দ্রুত পুশ করার শর্টকাট ফাইল।
+- `python github_uploader.py`: মেনুভিত্তিক মূল অটোমেশন ফাইল।
+- `push.py`: এক লাইনে দ্রুত পুশ করার শর্টকাট ফাইল।
+
 ৩. স্ক্রিনের মেনু থেকে আপনার পছন্দমতো অপশন সিলেক্ট করুন।
- ```
+```text
 1. নতুন Repository Setup করুন
 2. Existing Repository তে Upload করুন
 3. Custom Commit Message দিয়ে Upload
 4. শুধু Status চেক করুন
 5. Exit
- ```
+```
+
 ৪. এরপর Repository path দিন।
-৫. Commit message বসানঃauto-generate করতে চাইলে Enter চাপুন।
-৬' Branch name বসায়ে Enter চাপুন।
+৫. Commit message বসান (auto-generate করতে চাইলে Enter চাপুন)।
+৬. Branch name বসায়ে Enter চাপুন।
 ৭. অপেক্ষা করুন।
 
 ==================================================
 ✨ UPLOAD COMPLETE!
 ==================================================
-
-
