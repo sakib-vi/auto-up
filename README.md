@@ -15,3 +15,13 @@
    python "python github_uploader.py"
    ```
 ৩. স্ক্রিনের মেনু থেকে আপনার পছন্দমতো অপশন সিলেক্ট করুন।
+ ```
+1. নতুন Repository Setup করুন
+2. Existing Repository তে Upload করুন
+3. Custom Commit Message দিয়ে Upload
+4. শুধু Status চেক করুন
+5. Exit
+ ```
+==================================================
+✨ UPLOAD COMPLETE!
+==================================================
